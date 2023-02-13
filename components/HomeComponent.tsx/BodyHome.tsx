@@ -4,21 +4,30 @@ interface props {
   data: Root[]
 }
 
-import React from 'react'
+import React, { useMemo } from 'react'
 import { Root } from 'types/api'
 import CardCountryComponent from './CardCountryComponent'
 import HeaderHome from './HeaderHome'
 
 const BodyHomeComponent = ({ data }: props) => {
 
+  const setArray = new Set<string>()
+
+  const arrayRegions: string[] = useMemo(() => {
+    return data.reduce((previus, current) => {
+      setArray.add(current.region)
+      return Array.from(setArray)
+    }, [""])
+  }, [data])
+
   return (
     <>
-      <HeaderHome />
-      <section className='border-2 border-b-darkgrayLMI grid grid-cols-4 box-border gap-5' >
+      <HeaderHome regions={arrayRegions} />
+      <section className='border-2 border-b-darkgrayLMI grid grid-cols-4 box-border gap-14' >
         {
           data.map((country) => {
             return (
-          
+
               <CardCountryComponent
                 key={country.name}
                 name={country.name}
