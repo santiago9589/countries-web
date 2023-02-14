@@ -4,12 +4,11 @@ interface props {
     name: string
     handleName: (name: string) => void
     isSelected: boolean
-    children?:React.ReactNode
 }
 
 const OptionsHome = ({ name, handleName, isSelected }: props) => {
     return (
-        <li className={`text-center ${isSelected ? ("bg-darkgrayLMI") : ("")}`} onClick={() => handleName(name)}>{name}</li>
+        <span className={`ml-4 p-4 flex-1 rounded-md text-lg uppercase  ${isSelected ? ("") : ("")}`} onClick={() => handleName(name)}>{name}</span>
     )
 }
 
