@@ -8,7 +8,7 @@ interface props {
 
 const OptionsHome = ({ name, handleName, isSelected }: props) => {
     return (
-        <span className={`ml-4 p-4 flex-1 rounded-md text-lg uppercase  ${isSelected ? ("") : ("")}`} onClick={() => handleName(name)}>{name}</span>
+        <span className={`ml-4 p-4 flex-1 rounded-md text-lg capitalize  ${isSelected ? ("") : ("")}`} onClick={() => handleName(name)}>{name}</span>
     )
 }
 

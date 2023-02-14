@@ -2,7 +2,7 @@ import React from 'react'
 
 const NavbarComponent = () => {
   return (
-    <nav className='px-16 h-14 border-b-[1px] shadow-sm shadow-darkgrayLMI flex justify-between items-center border-b-darkgrayLMI box-border'>
+    <nav className='px-16 h-14  flex justify-between items-center bg-whiteDMTLME  border-b-2  border-b-whiteDMTLME  shadow-sm  box-border'>
       <h1 className='capitalize text-verydarkblueLMT font-bold text-xl'>Where in the world?</h1>
       <section className='flex items-center justify-start w-40'>
         <svg className='w-6 h-6' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">

@@ -23,7 +23,7 @@ const BodyHomeComponent = ({ data }: props) => {
   return (
     <>
       <HeaderHome regions={arrayRegions} />
-      <section className='border-2 border-b-darkgrayLMI grid grid-cols-4 box-border gap-14' >
+      <section className=' grid grid-cols-4 box-border gap-12 p-12 ' >
         {
           data.map((country) => {
             return (
