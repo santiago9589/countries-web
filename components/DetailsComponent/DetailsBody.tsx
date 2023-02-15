@@ -32,12 +32,12 @@ const DetailsBody = () => {
                 <article className='flex-1 border-2 border-whiteDMTLME shadow-lg h-full p-4'>
                     <img src={country?.flag} alt="flag-country" className='w-full h-full' />
                 </article>
-                <article className='flex-1 border-2 border-whiteDMTLME shadow-lg h-full p-8 flex items-center justify-center flex-col space-y-2'>
+                <article className='flex-1 border-2 border-whiteDMTLME shadow-lg h-full p-8 flex items-center justify-center flex-col'>
                     <header>
                         <h1 className='text-3xl font-bold uppercase mb-8'>{country?.name}</h1>
                     </header>
                     <section className='flex w-full gap-8'>
-                        <section className='flex-1 w-full flex flex-col space-y-2'>
+                        <section className='flex-1 w-full flex flex-col space-y-3'>
                             <section>
                                 <ParagraphBlack text='Native Name:' /><span className='text-lg'>{country?.nativeName}</span>
                             </section>
@@ -57,7 +57,7 @@ const DetailsBody = () => {
                             </section>
                         </section>
 
-                        <section className='flex-1 w-full flex flex-col space-y-2'>
+                        <section className='flex-1 w-full flex flex-col space-y-3'>
                             <section>
                                 <ParagraphBlack text='Top level domain:' /><span className='text-lg'>{country?.topLevelDomain}</span>
                             </section>
@@ -70,8 +70,8 @@ const DetailsBody = () => {
                         </section>
 
                     </section>
-                    <footer className='flex items-center mt-12'>
-                        <h1 className='text-lg font-bold capitalize mr-2'>Border Countries</h1>
+                    <footer className='flex items-center mt-14'>
+                        <h1 className='text-lg font-bold capitalize mr-2'>Border Countries:</h1>
                         <article className='flex space-x-3'>
                             {
                                 country?.borders.map((name) => {
