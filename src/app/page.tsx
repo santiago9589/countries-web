@@ -14,9 +14,9 @@ export default async function Home() {
   const data = await getData();
 
   return (
-    <main>
+    <>
       <NavbarComponent/>
       <BodyHomeComponent data={data}/>
-    </main>
+    </>
   )
 }

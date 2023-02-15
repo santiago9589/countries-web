@@ -27,7 +27,6 @@ const BodyHomeComponent = ({ data }: props) => {
         {
           data.map((country) => {
             return (
-
               <CardCountryComponent
                 key={country.name}
                 name={country.name}
