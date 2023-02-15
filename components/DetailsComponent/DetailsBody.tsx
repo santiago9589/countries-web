@@ -6,31 +6,20 @@ import { useSearchParams, useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 import { Root } from 'types/api';
 import ButtonBack from './buttonBack';
+import { useCountry } from './hooks/useCountry';
+import { useHandleRoute } from './hooks/useHandleRouter';
 
 const DetailsBody = () => {
 
-    const router = useRouter();
-    const handleRouter = (url: string) => {
-        router.push(url)
-    }
-
-
-    const searchParams = useSearchParams();
-    const countrySearch = searchParams.get('countrySearch');
-    const [country, setCountry] = useState<Root>()
-
-    useEffect(() => {
-        api.country(countrySearch!).then((response) => {
-            setCountry(response)
-        })
-    }, [])
-
+    const [handleRouter] = useHandleRoute()
+    const [country] = useCountry()
+   
     return (
         <section className='p-16 box-border'>
             <ButtonBack handleRouter={handleRouter} />
             <section className='w-full flex h-[700px] mt-24 gap-14'>
                 <article className='flex-1 border-2 border-whiteDMTLME shadow-lg h-full p-4'>
-                    <img src={country?.flag} alt="flag-country" className='w-full h-full' />
+                    <img src={country?.flags.png} alt="flag-country" className='w-full h-full' />
                 </article>
                 <article className='flex-1 border-2 border-whiteDMTLME shadow-lg h-full p-8 flex items-center justify-center flex-col'>
                     <header>

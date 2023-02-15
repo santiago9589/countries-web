@@ -8,18 +8,11 @@ import React, { useMemo } from 'react'
 import { Root } from 'types/api'
 import CardCountryComponent from './CardCountryComponent'
 import HeaderHome from './HeaderHome'
+import { useRegions } from './hooks/useRegions'
 
 const BodyHomeComponent = ({ data }: props) => {
 
-  const setArray = new Set<string>()
-
-  const arrayRegions: string[] = useMemo(() => {
-    return data.reduce((previus, current) => {
-      setArray.add(current.region)
-      return Array.from(setArray)
-    }, [""])
-  }, [data])
-
+  const [arrayRegions] = useRegions()
   return (
     <>
       <HeaderHome regions={arrayRegions} />
