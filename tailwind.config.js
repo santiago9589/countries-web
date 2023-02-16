@@ -8,8 +8,8 @@ module.exports = {
   ],
   theme: {
     screens: {
-      'mb': '375px',
-      'desktop': '1440px',
+      'sm': '375px',
+      'xl': '1440px',
     },
     colors: {
       'darkblueDM': 'hsl(209, 23%, 22%)',

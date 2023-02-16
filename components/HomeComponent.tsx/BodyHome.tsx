@@ -4,7 +4,7 @@ interface props {
   data: Root[]
 }
 
-import React, { useMemo } from 'react'
+import React from 'react'
 import { Root } from 'types/api'
 import CardCountryComponent from './CardCountryComponent'
 import HeaderHome from './HeaderHome'
@@ -16,7 +16,7 @@ const BodyHomeComponent = ({ data }: props) => {
   return (
     <>
       <HeaderHome regions={arrayRegions} />
-      <section className=' grid grid-cols-4 box-border gap-12 p-12 ' >
+      <section className=' grid grid-cols-1 xl:grid-cols-4 box-border gap-12  p-4 xl:p-12 ' >
         {
           data.map((country) => {
             return (
