@@ -1,21 +1,19 @@
 "use client"
 
-interface props{
-    country:Root
-}
-
+import { api } from 'api/api';
 import ParagraphBlack from 'components/HomeComponent.tsx/paragrah.style';
-import React from 'react'
+import { useSearchParams, useRouter } from 'next/navigation';
+import React, { useEffect, useState } from 'react'
 import { Root } from 'types/api';
 import ButtonBack from './buttonBack';
 import { useCountry } from './hooks/useCountry';
 import { useHandleRoute } from './hooks/useHandleRouter';
 
-const DetailsBody = ({country}:props) => {
+const DetailsBody = () => {
 
     const [handleRouter] = useHandleRoute()
-  
-
+    const [country] = useCountry()
+   
     return (
         <section className='p-16 box-border'>
             <ButtonBack handleRouter={handleRouter} />
@@ -65,13 +63,11 @@ const DetailsBody = ({country}:props) => {
                         <h1 className='text-lg font-bold capitalize mr-2'>Border Countries:</h1>
                         <article className='flex space-x-3'>
                             {
-                                country?.borders ? (
-                                    country?.borders.map((name) => {
-                                        return (
-                                            <span className="border-2 border-whiteDMTLME shadow-md p-1" key={name}>{name}</span>
-                                        )
-                                    })
-                                ) : (null)
+                                country?.borders.map((name) => {
+                                    return (
+                                        <span className="border-2 border-whiteDMTLME shadow-md p-1" key={name}>{name}</span>
+                                    ) 
+                                })
                             }
                         </article>
                     </footer>

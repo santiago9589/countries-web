@@ -12,5 +12,14 @@ export const api = {
     country: async (name: string): Promise<Root> => {
         const response = await axios.get(`https://restcountries.com/v2/name/${name}`)
         return response.data[0]
+    },
+    routes: async (): Promise<string[]> => {
+        const response = await axios.get("https://restcountries.com/v2/all")
+        const routes:string[] = response.data.reduce((prev:string[],current:Root)=>{
+            prev.push(current.name)
+            return prev
+        },[])
+
+        return routes
     }
 }

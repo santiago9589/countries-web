@@ -17,7 +17,7 @@ const CardCountryComponent = ({ name, population, region, capital, img }: props)
     const router = useRouter();
 
     return (
-            <article className='w-full border-[0.8px] rounded-md h-[450px] border-whiteDMTLME shadow-md box-border' onClick={() => router.push(`/details?countrySearch=${name}`)}>
+            <article className='w-full border-[0.8px] rounded-md h-[450px] border-whiteDMTLME shadow-md box-border' onClick={() => router.push(`details/${name}`)}>
                 <img className="h-2/3 w-full" src={img} alt="img-country" />
                 <section className="h-1/3 w-full">
                     <h1 className='text-center my-2 uppercase font-bold text-sm w-full' >{name}</h1>
