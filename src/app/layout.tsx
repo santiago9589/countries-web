@@ -12,7 +12,7 @@ export default function RootLayout({
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
-      <body className=" bg-verylightgrayLMB container mx-auto overflow-y-auto font-Nunito box-border">{children}</body>
+      <body className=" bg-verylightgrayLMB dark:bg-verydarkblueDMB container mx-auto overflow-y-auto font-Nunito box-border">{children}</body>
     </html> 
   )
 }
