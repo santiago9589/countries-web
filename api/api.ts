@@ -1,25 +1,36 @@
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { Root } from "types/api";
-import { data } from "./data";
-import { uniData } from "./data";
 
 
 export const api = {
-    list: async (): Promise<Root[]> => {
-        const response = await axios.get("https://restcountries.com/v2/all")
-        return response.data
+    list: async (): Promise<Root[] | any> => {
+        try {
+            const response = await axios.get("https://restcountries.com/v2/all")
+            return response.data
+        } catch (error: any) {
+            return error
+        }
     },
-    country: async (name: string): Promise<Root> => {
-        const response = await axios.get(`https://restcountries.com/v2/name/${name}`)
-        return response.data[0]
+    country: async (name: string): Promise<Root | any> => {
+        try {
+            const response = await axios.get(`https://restcountries.com/v2/name/${name}`)
+            return response.data[0]
+        } catch (error: any) {
+            return error
+        }
     },
-    routes: async (): Promise<string[]> => {
-        const response = await axios.get("https://restcountries.com/v2/all")
-        const routes:string[] = response.data.reduce((prev:string[],current:Root)=>{
-            prev.push(current.name)
-            return prev
-        },[])
+    routes: async (): Promise<string[] | any> => {
+        try {
+            const response = await axios.get("https://restcountries.com/v2/all")
+            const routes: string[] = response.data.reduce((prev: string[], current: Root) => {
+                prev.push(current.name)
+                return prev
+            }, [])
 
-        return routes
+            return routes
+
+        } catch (error: any) {
+            return error
+        }
     }
 }

@@ -1,7 +1,7 @@
 import {create} from 'zustand';
 
 
-type State = {
+export type State = {
     search: string;
     selected:string
     setSearch: (value: string) => void;

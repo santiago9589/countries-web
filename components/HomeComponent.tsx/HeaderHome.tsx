@@ -10,11 +10,9 @@ interface props {
 const HeaderHome = ({ regions }: props) => {
 
     const [isShowOptions, namesOptions, handleShow] = useHeader(regions)
-    const value = useStore((state) => state.search);
-    const setValue = useStore((state) => state.setSearch);
-    const nameOptions = useStore((state) => state.selected);
-    const handleName = useStore((state) => state.setSelected);
 
+    const {search,setSearch,selected,setSelected} = useStore();
+    
 
     return (
         <nav className='flex items-start  flex-col xl:flex-row box-border justify-between container mx-auto h-[140px] mt-4 xl:mt-8 px-4 xl:px-12'>
@@ -24,8 +22,8 @@ const HeaderHome = ({ regions }: props) => {
                 </svg>
                 <section className='w-[500px]'>
                     <input
-                        value={value}
-                        onChange={(e) => setValue(e.target.value)}
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
                         placeholder='Search your country'
                         className='rounded-lg p-1 w-full h-full placeholder-opacity-80 bg-verylightgrayLMB dark:bg-verydarkblueDMB border-verydarkblueDMB'
                     />
@@ -34,7 +32,7 @@ const HeaderHome = ({ regions }: props) => {
             <section className='relative border-2 border-whiteDMTLME dark:border-darkblueDM shadow-md   w-2/3 xl:w-[300px] p-2 rounded-md h-[45px] xl:h-[60px]'>
                 <section className='box-border h-full' onClick={() => handleShow()}>
                     <section className='flex items-center justify-between h-full'>
-                        <span className='ml-4 dark:text-whiteDMTLME  text-sm xl:text-lg font-bold capitalize'>{nameOptions || "Selected your Region"}</span>
+                        <span className='ml-4 dark:text-whiteDMTLME  text-sm xl:text-lg font-bold capitalize'>{selected|| "Selected your Region"}</span>
                         {
                             isShowOptions ?
                                 (<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="relative z-20 w-6 h-6">
@@ -52,7 +50,7 @@ const HeaderHome = ({ regions }: props) => {
                                 {
                                     namesOptions.map((option) => {
                                         return (
-                                            <OptionsHome key={option} name={option} isSelected={option === nameOptions} handleName={handleName} />
+                                            <OptionsHome key={option} name={option} isSelected={option === selected} handleName={setSelected} />
                                         )
                                     })
                                 }

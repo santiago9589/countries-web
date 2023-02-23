@@ -8,8 +8,10 @@ import ParagraphBlack from 'components/HomeComponent.tsx/paragrah.style';
 import React from 'react'
 import { Root } from 'types/api';
 import ButtonBack from './buttonBack';
-import { useCountry } from './hooks/useCountry';
 import { useHandleRoute } from './hooks/useHandleRouter';
+
+
+
 
 const DetailsBody = ({country}:props) => {
 
