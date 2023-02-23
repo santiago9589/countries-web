@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useHeader } from './hooks/useHeader'
 import OptionsHome from './OptionsHome'
+import { useStore } from 'store/store'
 
 interface props {
     regions: string[]
@@ -8,7 +9,12 @@ interface props {
 
 const HeaderHome = ({ regions }: props) => {
 
-    const [isShowOptions, namesOptions, nameOptions, handleName, handleShow] = useHeader(regions)
+    const [isShowOptions, namesOptions, handleShow] = useHeader(regions)
+    const value = useStore((state) => state.search);
+    const setValue = useStore((state) => state.setSearch);
+    const nameOptions = useStore((state) => state.selected);
+    const handleName = useStore((state) => state.setSelected);
+
 
     return (
         <nav className='flex items-start  flex-col xl:flex-row box-border justify-between container mx-auto h-[140px] mt-4 xl:mt-8 px-4 xl:px-12'>
@@ -18,8 +24,10 @@ const HeaderHome = ({ regions }: props) => {
                 </svg>
                 <section className='w-[500px]'>
                     <input
+                        value={value}
+                        onChange={(e) => setValue(e.target.value)}
                         placeholder='Search your country'
-                        className='rounded-lg p-1 w-full h-full placeholder-opacity-80 bg-verylightgrayLMB dark:bg-verydarkblueDMB'
+                        className='rounded-lg p-1 w-full h-full placeholder-opacity-80 bg-verylightgrayLMB dark:bg-verydarkblueDMB border-verydarkblueDMB'
                     />
                 </section>
             </section>
@@ -44,7 +52,7 @@ const HeaderHome = ({ regions }: props) => {
                                 {
                                     namesOptions.map((option) => {
                                         return (
-                                            <OptionsHome name={option} isSelected={option === nameOptions} handleName={handleName} />
+                                            <OptionsHome key={option} name={option} isSelected={option === nameOptions} handleName={handleName} />
                                         )
                                     })
                                 }
