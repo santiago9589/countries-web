@@ -4,16 +4,12 @@ interface props {
   data: Root[]
 }
 
-type filtres = {
-  searchFilter : (value:string)=>boolean
-  selectedFilter : (value:string)=>boolean
-}
-
-import React, { useMemo } from 'react'
+import React from 'react'
 import { useStore } from 'store/store'
 import { Root } from 'types/api'
 import CardCountryComponent from './CardCountryComponent'
 import HeaderHome from './HeaderHome'
+import { useData } from './hooks/useData'
 import { useRegions } from './hooks/useRegions'
 
 const BodyHomeComponent = ({ data }: props) => {
@@ -21,21 +17,8 @@ const BodyHomeComponent = ({ data }: props) => {
   const [arrayRegions] = useRegions()
   const search = useStore((state) => state ? state.search : "");
   const selected = useStore((state) => state ? state.selected : "");
-
-  const dataFilterSearch = useMemo(() => {
-    return data.filter((value) => {
-      return value.name.toLowerCase().includes(search.toLowerCase())
-    })
-  }, [search])
-
-  const dataFilterSelected = useMemo(() => {
-    return dataFilterSearch.filter((value) => {
-      return value.region.toLowerCase().includes(selected.toLowerCase())
-    })
-  }, [selected,search])
-
+  const [dataFilterSelected] = useData({data,search,selected})
   
-
   return (
     <>
       <HeaderHome regions={arrayRegions} />
