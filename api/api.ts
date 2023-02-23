@@ -8,7 +8,7 @@ export const api = {
             const response = await axios.get("https://restcountries.com/v2/all")
             return response.data
         } catch (error: any) {
-            return error
+            throw new Error(error)
         }
     },
     country: async (name: string): Promise<Root | any> => {
@@ -16,7 +16,7 @@ export const api = {
             const response = await axios.get(`https://restcountries.com/v2/name/${name}`)
             return response.data[0]
         } catch (error: any) {
-            return error
+            throw new Error(error)
         }
     },
     routes: async (): Promise<string[] | any> => {
@@ -30,7 +30,7 @@ export const api = {
             return routes
 
         } catch (error: any) {
-            return error
+            throw new Error(error)
         }
     }
 }
